@@ -1,5 +1,9 @@
 import React from "react";
 import AuthService from "../../../service/auth_service";
+import LoginButton from "../../atoms/loginButton/loginButton";
+import styled from "styled-components";
+import Header from "../../blocks/header/header";
+import Footer from "../../blocks/footer/footer";
 
 interface loginProps {
   authService?: AuthService;
@@ -12,20 +16,49 @@ const Login = ({ authService }: loginProps): JSX.Element => {
     });
   };
   return (
-    <section>
-      <section>
+    <LoginWrap>
+      <Header />
+      <LoginBox>
         <h1>Login</h1>
         <ul>
           <li>
-            <button onClick={onLogin}>Google</button>
+            <LoginButton onClick={onLogin}>Google</LoginButton>
           </li>
           <li>
-            <button onClick={onLogin}>Github</button>
+            <LoginButton onClick={onLogin}>Github</LoginButton>
           </li>
         </ul>
-      </section>
-    </section>
+      </LoginBox>
+      <Footer />
+    </LoginWrap>
   );
 };
 
 export default Login;
+
+const LoginWrap = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+`;
+
+const LoginBox = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+
+  h1 {
+    text-align: center;
+    font-size: 1.7em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  ul {
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+  }
+`;
