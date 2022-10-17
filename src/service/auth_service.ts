@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   UserCredential,
+  signOut,
 } from "firebase/auth";
 
 type pType = string | null;
@@ -15,6 +16,11 @@ class AuthService {
     const auth = getAuth(firebaseApp);
     const provider = this.getProvider(providerName);
     return signInWithPopup(auth, provider);
+  }
+
+  logout(): Promise<void> {
+    const auth = getAuth(firebaseApp);
+    return signOut(auth);
   }
 
   getProvider(providerName: pType): AuthProvider {

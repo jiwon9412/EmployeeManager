@@ -20,4 +20,8 @@ const LoginBtn = styled.button`
   border-radius: 30px;
   margin-bottom: 10px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ffeae8;
+  }
 `;

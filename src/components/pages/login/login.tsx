@@ -4,20 +4,29 @@ import LoginButton from "../../atoms/loginButton/loginButton";
 import styled from "styled-components";
 import Header from "../../blocks/header/header";
 import Footer from "../../blocks/footer/footer";
+import { useNavigate } from "react-router-dom";
 
 interface loginProps {
   authService?: AuthService;
 }
 
 const Login = ({ authService }: loginProps): JSX.Element => {
+  const nevigate = useNavigate();
   const onLogin = (event: React.MouseEvent): void => {
     authService?.login(event.currentTarget.textContent).then((result) => {
-      console.log(result.user);
+      console.log(result);
+      nevigate("/app", {
+        state: {
+          username: result.user.displayName,
+          useremail: result.user.email,
+          userId: result.user.uid,
+        },
+      });
     });
   };
   return (
     <LoginWrap>
-      <Header />
+      <Header onLogin={false} />
       <LoginBox>
         <h1>Login</h1>
         <ul>

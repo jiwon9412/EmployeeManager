@@ -2,6 +2,8 @@ import Login from "./components/pages/login/login";
 import AuthService from "./service/auth_service";
 import "./App.css";
 import styled from "styled-components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Manage from "./components/pages/manage/manage";
 
 interface AppProps {
   authService?: AuthService;
@@ -9,9 +11,14 @@ interface AppProps {
 
 function App({ authService }: AppProps): JSX.Element {
   return (
-    <StyleApp>
-      <Login authService={authService} />
-    </StyleApp>
+    <BrowserRouter>
+      <StyleApp>
+        <Routes>
+          <Route path='/' element={<Login authService={authService} />} />
+          <Route path='/app' element={<Manage />} />
+        </Routes>
+      </StyleApp>
+    </BrowserRouter>
   );
 }
 
