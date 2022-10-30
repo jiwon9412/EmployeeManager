@@ -1,28 +1,31 @@
-import { useLocation } from "react-router-dom";
-import styled from "styled-components";
+import React from "react";
 import AuthService from "../../../service/auth_service";
 import Footer from "../../blocks/footer/footer";
 import Header from "../../blocks/header/header";
+import styled from "styled-components";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../../blocks/sidebar/sidebar";
 
-const Manage = ({
+const Layout = ({
   authService,
 }: {
   authService?: AuthService;
 }): JSX.Element => {
-  const location = useLocation();
-  console.log(authService);
   return (
-    <ManageWrap>
+    <LayoutWrap>
       <Header onLogin={true} authService={authService} />
-      <ManageBox />
+      <Main>
+        <Sidebar />
+        <Outlet />
+      </Main>
       <Footer />
-    </ManageWrap>
+    </LayoutWrap>
   );
 };
 
-export default Manage;
+export default Layout;
 
-const ManageWrap = styled.section`
+const LayoutWrap = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,9 +33,8 @@ const ManageWrap = styled.section`
   height: 100vh;
 `;
 
-const ManageBox = styled.section`
+const Main = styled.section`
   display: flex;
-  background-color: #fff;
   width: 100%;
   height: 100%;
 `;
