@@ -57,7 +57,7 @@ const StyledLink = styled(Link)`
   &:active {
     text-decoration: none;
   }
-
+  color: black;
   font-weight: 500;
   font-size: 18px;
 `;
