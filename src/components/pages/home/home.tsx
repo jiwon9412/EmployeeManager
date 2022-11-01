@@ -3,16 +3,21 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import AuthService from "../../../service/auth_service";
 
-interface Props {
+interface SlideProps {
   color?: string;
   preSlide?: number;
   currSlide?: number;
+}
+
+interface DotProps {
+  active?: number;
 }
 
 const Home = ({ authService }: { authService?: AuthService }): JSX.Element => {
   const location = useLocation();
   const [preSlide, setPreSlide] = useState(1);
   const [currSlide, setCurrSlide] = useState(1);
+  const [isActive, setIsActive] = useState(false);
 
   const slide = (index?: number): void => {
     if (currSlide !== index) {
@@ -30,10 +35,10 @@ const Home = ({ authService }: { authService?: AuthService }): JSX.Element => {
         <SlideItem color='blue' />
         <SlideItem color='green' />
       </SlideBox>
-      <SlideDot>
-        <span onClick={() => slide(1)}>○</span>
-        <span onClick={() => slide(2)}>○</span>
-        <span onClick={() => slide(3)}>○</span>
+      <SlideDot active={currSlide}>
+        <span onClick={() => slide(1)}></span>
+        <span onClick={() => slide(2)}></span>
+        <span onClick={() => slide(3)}></span>
       </SlideDot>
     </HomeBox>
   );
@@ -60,7 +65,7 @@ const SlideBox = styled.div`
   overflow: hidden;
 `;
 
-const SlideItem = styled.div<Props>`
+const SlideItem = styled.div<SlideProps>`
   display: inline-block;
   background-color: ${(props) => props.color};
   width: 100%;
@@ -122,14 +127,22 @@ const SlideItem = styled.div<Props>`
   }
 `;
 
-const SlideDot = styled.div`
+const SlideDot = styled.div<DotProps>`
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 1em;
+
   span {
+    display: block;
     margin: 0 1em;
     cursor: pointer;
-    //color: blue;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 1px solid #385461;
+  }
+  span:nth-child(${(props) => props.active}) {
+    background-color: #385461;
   }
 `;
