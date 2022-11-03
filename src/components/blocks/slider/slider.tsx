@@ -37,13 +37,14 @@ const SlideBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 70%;
+  height: 40vh;
 `;
 
 const ItemBox = styled.div`
   display: flex;
-  width: 100%;
-  height: 40vh;
+  width: 70%;
+  height: 100%;
   white-space: nowrap;
   overflow: hidden;
 `;
@@ -51,10 +52,10 @@ const ItemBox = styled.div`
 const SlideItem = styled.div<SlideProps>`
   flex: none;
   background-color: ${(props) => props.color};
-  width: 100%;
-  height: 100%;
   margin-left: ${(props) => `-${props.currSlide}00%`};
   transition: margin 1000ms;
+  width: 100%;
+  height: 100%;
 `;
 
 const SlideDot = styled.div<DotProps>`
@@ -69,6 +70,8 @@ const SlideDot = styled.div<DotProps>`
     cursor: pointer;
     width: 1em;
     height: 1em;
+    min-width: 10px;
+
     border-radius: 50%;
     border: 1px solid #385461;
   }

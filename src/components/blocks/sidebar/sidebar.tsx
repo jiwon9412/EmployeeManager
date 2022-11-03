@@ -29,6 +29,7 @@ const SideBarNavigation = styled.nav`
   width: 20%;
   min-width: 120px;
   height: 100%;
+  border-right: 3px solid #385461;
 
   ul {
     list-style: none;
