@@ -1,8 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Footer = () => {
+interface FooterProps {
+  onLogin: boolean;
+}
+const Footer = ({ onLogin }: { onLogin: boolean }) => {
   return (
-    <StyleFooter>
+    <StyleFooter onLogin={onLogin}>
       <h3>Manage Your Employees</h3>
     </StyleFooter>
   );
@@ -10,7 +13,7 @@ const Footer = () => {
 
 export default Footer;
 
-const StyleFooter = styled.footer`
+const StyleFooter = styled.footer<FooterProps>`
   background-color: #385461;
   width: 80%;
   max-height: 55px;
@@ -20,6 +23,15 @@ const StyleFooter = styled.footer`
   position: fixed;
   bottom: 0;
   left: 10%;
+
+  ${(props) =>
+    !props.onLogin &&
+    css`
+      position: relative;
+      width: 100%;
+      top: 0;
+      left: 0;
+    `}
 
   h3 {
     margin: 10px;

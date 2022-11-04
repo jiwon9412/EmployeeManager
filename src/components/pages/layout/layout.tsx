@@ -18,7 +18,7 @@ const Layout = ({
         <Sidebar />
         <Outlet />
       </Main>
-      <Footer />
+      <Footer onLogin={true} />
     </LayoutWrap>
   );
 };

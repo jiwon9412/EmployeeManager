@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import ListBox from "../../atoms/listBox";
+import ListBox, { ListBoxProps } from "../../atoms/listBox";
 
-const ListBoxs = (): JSX.Element => {
+const ListBoxs = ({
+  employeeInfos,
+}: {
+  employeeInfos: ListBoxProps[];
+}): JSX.Element => {
   return (
     <ListBoxWrap>
-      <ListBox />
-      <ListBox />
-      <ListBox />
+      {employeeInfos.map((employeeInfo) => (
+        <ListBox employeeInfo={employeeInfo} />
+      ))}
     </ListBoxWrap>
   );
 };

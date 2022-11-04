@@ -1,12 +1,27 @@
 import styled from "styled-components";
 
-const ListBox = (): JSX.Element => {
+export interface ListBoxProps {
+  name: string;
+  department: string;
+  rank: string;
+  image: string;
+}
+
+const ListBox = ({
+  employeeInfo,
+}: {
+  employeeInfo: ListBoxProps;
+}): JSX.Element => {
+  const { name, department, rank, image } = employeeInfo;
+
   return (
     <StyleListBox>
-      <img src={require("../../assets/jiwon.png")} alt='' />
+      <img src={require(`../../assets/${image}`)} alt='' />
       <div>
-        <p className='name'>정지원</p>
-        <p className='info'>개발팀 / 사원</p>
+        <p className='name'>{name}</p>
+        <p className='info'>
+          {department} / {rank}
+        </p>
       </div>
     </StyleListBox>
   );
@@ -29,7 +44,6 @@ const StyleListBox = styled.div`
     width: 50%;
     aspect-ratio: 16 / 9;
     background-color: #fff;
-    padding: 0.4em;
   }
 
   div {

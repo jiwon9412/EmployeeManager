@@ -38,7 +38,7 @@ const Login = ({ authService }: loginProps): JSX.Element => {
           </li>
         </ul>
       </LoginBox>
-      <Footer />
+      <Footer onLogin={false} />
     </LoginWrap>
   );
 };
