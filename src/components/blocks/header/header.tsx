@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import AuthService from "../../../service/auth_service";
@@ -34,9 +35,12 @@ const StyleHeader = styled.header`
   flex-direction: column;
   align-items: center;
   background-color: #385461;
-  width: 100%;
+  width: 80%;
+  max-height: 75px;
   padding: 5px 5px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 10%;
 
   img {
     display: block;

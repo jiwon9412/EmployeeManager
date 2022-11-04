@@ -28,7 +28,6 @@ const SideBarNavigation = styled.nav`
   background-color: #fff;
   width: 20%;
   min-width: 120px;
-  height: 100%;
   border-right: 3px solid #385461;
 
   ul {

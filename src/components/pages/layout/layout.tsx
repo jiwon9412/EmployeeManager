@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import AuthService from "../../../service/auth_service";
 import Footer from "../../blocks/footer/footer";
 import Header from "../../blocks/header/header";
@@ -30,11 +30,13 @@ const LayoutWrap = styled.section`
   flex-direction: column;
   justify-content: space-between;
   width: 80%;
-  height: 100vh;
+  height: 100%;
 `;
 
 const Main = styled.section`
   display: flex;
   width: 100%;
   height: 100%;
+  padding-top: 75px;
+  padding-bottom: 55px;
 `;

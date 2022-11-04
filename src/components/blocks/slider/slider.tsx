@@ -38,13 +38,14 @@ const SlideBox = styled.div`
   flex-direction: column;
   align-items: center;
   width: 70%;
-  height: 40vh;
+  height: 60%;
 `;
 
 const ItemBox = styled.div`
   display: flex;
   width: 70%;
   height: 100%;
+  aspect-ratio: 4 / 5; /* 16:9 비율 지정 */
   white-space: nowrap;
   overflow: hidden;
 `;
