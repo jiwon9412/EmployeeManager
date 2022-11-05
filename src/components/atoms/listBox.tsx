@@ -31,13 +31,14 @@ export default ListBox;
 
 const StyleListBox = styled.div`
   display: flex;
-  width: 25%;
+  width: 20%;
   min-width: 100px;
   aspect-ratio: 16 / 7;
   border-radius: 1em;
   margin: 1em 1.5em;
   padding: 0.5em 0.5em;
-  background-color: #daeeff;
+  background-color: #fff;
+  box-shadow: 0 0.3em 10px 0 #ccc;
 
   img {
     display: block;

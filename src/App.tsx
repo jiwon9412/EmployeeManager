@@ -30,13 +30,3 @@ function App({ authService }: AppProps): JSX.Element {
 }
 
 export default App;
-
-const StyleApp = styled.div`
-  width: 100%;
-  height: 100vh;
-  min-width: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #626262;
-`;

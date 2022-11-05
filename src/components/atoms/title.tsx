@@ -17,6 +17,7 @@ export default Title;
 
 const StyleTitle = styled.section`
   width: 100%;
+  min-width: 300px;
   height: 10%;
 
   h2 {

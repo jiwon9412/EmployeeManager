@@ -45,8 +45,8 @@ const SlideBox = styled.div`
 const ItemBox = styled.div`
   display: flex;
   width: 70%;
-  height: 100%;
-  aspect-ratio: 4 / 5; /* 16:9 비율 지정 */
+
+  aspect-ratio: 4 / 5;
   white-space: nowrap;
   overflow: hidden;
 `;

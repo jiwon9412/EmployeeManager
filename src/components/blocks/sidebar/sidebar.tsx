@@ -27,48 +27,75 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
   };
 
   return (
-    <SideBarNavigation>
-      <ul>
-        <StyledLink
-          to=''
-          selected={selected["home"]}
-          onClick={() => {
-            handleClick("home");
-          }}
-        >
-          <li>Home</li>
-        </StyledLink>
+    <SideWrap>
+      <SideLogo>
+        <img src='images/sidelogo.png' alt='' />
+      </SideLogo>
+      <SideBarNavigation>
+        <ul>
+          <StyledLink
+            to=''
+            selected={selected["home"]}
+            onClick={() => {
+              handleClick("home");
+            }}
+          >
+            <li>Home</li>
+          </StyledLink>
 
-        <StyledLink
-          to='list'
-          selected={selected["list"]}
-          onClick={() => {
-            handleClick("list");
-          }}
-        >
-          <li>List</li>
-        </StyledLink>
+          <StyledLink
+            to='list'
+            selected={selected["list"]}
+            onClick={() => {
+              handleClick("list");
+            }}
+          >
+            <li>List</li>
+          </StyledLink>
 
-        <StyledLink
-          to='board'
-          selected={selected["board"]}
-          onClick={() => {
-            handleClick("board");
-          }}
-        >
-          <li>Board</li>
-        </StyledLink>
-      </ul>
-    </SideBarNavigation>
+          <StyledLink
+            to='board'
+            selected={selected["board"]}
+            onClick={() => {
+              handleClick("board");
+            }}
+          >
+            <li>Board</li>
+          </StyledLink>
+        </ul>
+      </SideBarNavigation>
+    </SideWrap>
   );
 };
 
 export default Sidebar;
 
-const SideBarNavigation = styled.nav`
-  background-color: #fff;
+const SideWrap = styled.section`
+  display: flex;
+  flex-direction: column;
   width: 25%;
   min-width: 120px;
+`;
+
+const SideLogo = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  padding: 0 2em;
+
+  img {
+    display: block;
+    width: 70%;
+    height: auto;
+  }
+  /* border: 1px solid black; */
+`;
+
+const SideBarNavigation = styled.nav`
+  background-color: #fff;
+  width: 100%;
+
   /* border-right: 3px solid #385461; */
 
   ul {

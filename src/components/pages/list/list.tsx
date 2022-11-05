@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Card from "../../atoms/card";
 import Title from "../../atoms/title";
 
 interface Employee {
@@ -21,6 +22,7 @@ const List = () => {
   return (
     <ListWrap>
       <Title title='Member List' />
+      <Card />
     </ListWrap>
   );
 };
