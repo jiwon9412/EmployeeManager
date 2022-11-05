@@ -25,25 +25,37 @@ const Login = ({ authService }: loginProps): JSX.Element => {
     });
   };
   return (
-    <LoginWrap>
-      <Header onLogin={false} />
-      <LoginBox>
-        <h1>Login</h1>
-        <ul>
-          <li>
-            <LoginButton onClick={onLogin}>Google</LoginButton>
-          </li>
-          <li>
-            <LoginButton onClick={onLogin}>Github</LoginButton>
-          </li>
-        </ul>
-      </LoginBox>
-      <Footer onLogin={false} />
-    </LoginWrap>
+    <StyleApp>
+      <LoginWrap>
+        <Header onLogin={false} />
+        <LoginBox>
+          <h1>Login</h1>
+          <ul>
+            <li>
+              <LoginButton onClick={onLogin}>Google</LoginButton>
+            </li>
+            <li>
+              <LoginButton onClick={onLogin}>Github</LoginButton>
+            </li>
+          </ul>
+        </LoginBox>
+        <Footer onLogin={false} />
+      </LoginWrap>
+    </StyleApp>
   );
 };
 
 export default Login;
+
+const StyleApp = styled.div`
+  width: 100%;
+  height: 100vh;
+  min-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #626262;
+`;
 
 const LoginWrap = styled.section`
   display: flex;

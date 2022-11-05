@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import AuthService from "../../../service/auth_service";
 import { ListBoxProps } from "../../atoms/listBox";
+import Title from "../../atoms/title";
 import ListBoxs from "../../blocks/listBoxs/listBoxs";
 import Slider from "../../blocks/slider/slider";
 
@@ -10,7 +11,9 @@ const Home = ({ authService }: { authService?: AuthService }): JSX.Element => {
   const location = useLocation();
   return (
     <HomeBox>
+      <Title title='Home' />
       <Slider />
+      <Title title='Member' />
       <ListBoxs employeeInfos={data} />
     </HomeBox>
   );
@@ -24,16 +27,7 @@ const HomeBox = styled.section`
   align-items: center;
   background-color: #fff;
   width: 100%;
-  height: 100%;
-  padding: 10px 0;
-`;
-
-const HomeSlider = styled(Slider)`
-  height: 300px;
-`;
-
-const HomeListBoxs = styled(ListBoxs)`
-  max-height: 50%;
+  height: 100vh;
 `;
 
 const data: ListBoxProps[] = [
@@ -55,4 +49,10 @@ const data: ListBoxProps[] = [
     rank: "대리",
     image: "hyowon.jpeg",
   },
+  // {
+  //   name: "김수환",
+  //   department: "소설팀",
+  //   rank: "부장",
+  //   image: "suhwan.jpg",
+  // },
 ];

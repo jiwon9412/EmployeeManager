@@ -4,6 +4,7 @@ import styled from "styled-components";
 interface SlideProps {
   color?: string;
   currSlide?: number;
+  image: string;
 }
 
 interface DotProps {
@@ -18,9 +19,9 @@ const Slider = (): JSX.Element => {
   return (
     <SlideBox>
       <ItemBox>
-        <SlideItem color='red' currSlide={currSlide} />
-        <SlideItem color='blue' />
-        <SlideItem color='green' />
+        <SlideItem image='slider_image1.png' currSlide={currSlide}></SlideItem>
+        <SlideItem image='slider_image2.png'></SlideItem>
+        <SlideItem image='slider_image3.jpg'></SlideItem>
       </ItemBox>
       <SlideDot active={currSlide + 1}>
         <span onClick={() => slide(0)}></span>
@@ -38,7 +39,7 @@ const SlideBox = styled.div`
   flex-direction: column;
   align-items: center;
   width: 70%;
-  height: 60%;
+  max-height: 50%;
 `;
 
 const ItemBox = styled.div`
@@ -52,11 +53,14 @@ const ItemBox = styled.div`
 
 const SlideItem = styled.div<SlideProps>`
   flex: none;
-  background-color: ${(props) => props.color};
   margin-left: ${(props) => `-${props.currSlide}00%`};
   transition: margin 1000ms;
   width: 100%;
   height: 100%;
+  background-image: ${(props) => `url(/images/${props.image})`};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
 `;
 
 const SlideDot = styled.div<DotProps>`

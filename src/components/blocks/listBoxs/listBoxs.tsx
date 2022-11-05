@@ -21,8 +21,7 @@ export default ListBoxs;
 const ListBoxWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 2em;
   width: 100%;
   min-width: 400px;
-  max-height: 40%;
+  max-height: 30%;
 `;

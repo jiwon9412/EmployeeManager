@@ -24,11 +24,13 @@ const Header = ({
     });
   };
 
+  console.log(onLogin);
+
   return (
     <StyleHeader onLogin={onLogin}>
       <img src='images/logo.png' alt='' />
       <h1>Employee Manager</h1>
-      {onLogin ?? <LogoutButton onLogout={onLogout} />}
+      {onLogin && <LogoutButton onLogout={onLogout} />}
     </StyleHeader>
   );
 };
@@ -39,7 +41,7 @@ const StyleHeader = styled.header<HeaderProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #385461;
+  background-color: #04447e;
   width: 80%;
   max-height: 75px;
   padding: 0.3em 1em;

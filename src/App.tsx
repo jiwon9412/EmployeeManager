@@ -15,7 +15,7 @@ interface AppProps {
 function App({ authService }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
-      <StyleApp>
+      <div className='app'>
         <Routes>
           <Route path='/' element={<Login authService={authService} />} />
           <Route path='/app' element={<Layout authService={authService} />}>
@@ -24,7 +24,7 @@ function App({ authService }: AppProps): JSX.Element {
             <Route path='board' element={<Board />} />
           </Route>
         </Routes>
-      </StyleApp>
+      </div>
     </BrowserRouter>
   );
 }

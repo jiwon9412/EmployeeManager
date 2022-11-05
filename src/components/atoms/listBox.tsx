@@ -37,13 +37,13 @@ const StyleListBox = styled.div`
   border-radius: 1em;
   margin: 1em 1.5em;
   padding: 0.5em 0.5em;
-  background-color: #e8e8e8;
+  background-color: #daeeff;
 
   img {
     display: block;
     width: 50%;
     aspect-ratio: 16 / 9;
-    background-color: #fff;
+    border-radius: 50%;
   }
 
   div {

@@ -14,7 +14,7 @@ const Footer = ({ onLogin }: { onLogin: boolean }) => {
 export default Footer;
 
 const StyleFooter = styled.footer<FooterProps>`
-  background-color: #385461;
+  background-color: #04447e;
   width: 80%;
   max-height: 55px;
   padding: 5px 5px;
