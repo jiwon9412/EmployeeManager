@@ -1,18 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { IEmployeeInfos } from "../pages/list/list";
 
-const Card = () => {
+const Card = ({
+  employeeInfo,
+}: {
+  employeeInfo: IEmployeeInfos;
+}): JSX.Element => {
+  const { name, department, rank, phone, photo } = employeeInfo;
   return (
     <StyleCard>
-      <img src={require(`../../assets/jiwon.png`)} alt='' />
+      <img src={require(`../../assets/${photo}`)} alt='' />
       <IntroBox>
-        <p id='name'>정지원</p>
+        <p id='name'>{name}</p>
         <p>반갑습니다 :)</p>
       </IntroBox>
       <InfoBox>
-        <p>소속 : 개발팀</p>
-        <p>직급 : 사원</p>
-        <p>전화 : 010-9999-2222</p>
+        <p>소속 : {department}</p>
+        <p>직급 : {rank}</p>
+        <p>전화 : {phone}</p>
       </InfoBox>
     </StyleCard>
   );

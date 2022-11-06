@@ -1,28 +1,65 @@
 import styled from "styled-components";
-import Card from "../../atoms/card";
 import Title from "../../atoms/title";
+import Cards from "../../blocks/cards/cards";
 
-interface Employee {
+export interface IEmployeeInfos {
   id: number;
   name: string;
   department: string;
   rank: string;
+  phone: string;
   photo: string;
 }
 
-const test = {
-  id: 3,
-  name: "테스트",
-  department: "테스트부서",
+const data: IEmployeeInfos[] = [
+  {
+    name: "정지원",
+    department: "개발팀",
+    rank: "사원",
+    photo: "jiwon.png",
+    phone: "010-9999-1111",
+    id: 0,
+  },
+  {
+    name: "전석영",
+    department: "인사팀",
+    rank: "대리",
+    photo: "sukyoung.jpg",
+    phone: "010-2222-1111",
+    id: 1,
+  },
+  {
+    name: "나효원",
+    department: "개발팀",
+    rank: "대리",
+    photo: "hyowon.jpeg",
+    phone: "010-3333-1111",
+    id: 2,
+  },
+  {
+    name: "김수환",
+    department: "소설팀",
+    rank: "부장",
+    photo: "suhwan.jpg",
+    phone: "010-2222-3232",
+    id: 3,
+  },
+];
+
+const testData = {
+  name: "정지원",
+  department: "개발팀",
   rank: "사원",
   photo: "jiwon.png",
+  phone: "010-1111-1111",
+  id: 0,
 };
 
 const List = () => {
   return (
     <ListWrap>
       <Title title='Member List' />
-      <Card />
+      <Cards employeeInfos={data} />
     </ListWrap>
   );
 };

@@ -74,7 +74,7 @@ const SideWrap = styled.section`
   display: flex;
   flex-direction: column;
   width: 25%;
-  min-width: 120px;
+  min-width: 200px;
 `;
 
 const SideLogo = styled.div`
@@ -111,6 +111,7 @@ const SideBarNavigation = styled.nav`
       height: 3em;
       border-radius: 10px;
       font-weight: 500;
+      min-width: 100px;
 
       &:hover {
         background-color: #ededed;
