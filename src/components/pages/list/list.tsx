@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Title from "../../atoms/title";
+import Search from "../../atoms/search";
 import Cards from "../../blocks/cards/cards";
+import SearchTitle from "../../blocks/searchTitle/searchTitle";
 
 export interface IEmployeeInfos {
   id: number;
@@ -44,21 +45,22 @@ const data: IEmployeeInfos[] = [
     phone: "010-2222-3232",
     id: 3,
   },
+  {
+    name: "한민기",
+    department: "개발팀",
+    rank: "과장",
+    photo: "mingi.jpeg",
+    phone: "010-3131-3232",
+    id: 3,
+  },
 ];
-
-const testData = {
-  name: "정지원",
-  department: "개발팀",
-  rank: "사원",
-  photo: "jiwon.png",
-  phone: "010-1111-1111",
-  id: 0,
-};
 
 const List = () => {
   return (
     <ListWrap>
-      <Title title='Member List' />
+      <ListHeader>
+        <SearchTitle title='Member List' />
+      </ListHeader>
       <Cards employeeInfos={data} />
     </ListWrap>
   );
@@ -71,4 +73,10 @@ const ListWrap = styled.section`
   height: 100vh;
   padding: 10px 0;
   background-color: #fff;
+`;
+
+const ListHeader = styled.section`
+  display: flex;
+
+  width: 100%;
 `;

@@ -21,7 +21,5 @@ const CardsWrap = styled.section`
   flex-wrap: wrap;
   padding: 1% 5%;
 
-  Card {
-    margin-bottom: 5%;
-  }
+
 `;

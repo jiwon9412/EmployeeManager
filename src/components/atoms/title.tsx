@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ITitle {
+export interface ITitle {
   title: string;
 }
 
@@ -16,6 +16,9 @@ const Title = ({ title }: ITitle): JSX.Element => {
 export default Title;
 
 const StyleTitle = styled.section`
+  display: flex;
+  align-items: center;
+
   width: 100%;
   min-width: 300px;
   height: 10%;

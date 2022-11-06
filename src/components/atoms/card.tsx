@@ -37,6 +37,7 @@ const StyleCard = styled.div`
   /* border: 1px solid black; */
   border-radius: 5%;
   box-shadow: 0 0.3em 10px 0 #ccc;
+  margin-bottom: 5%;
 
   img {
     display: block;

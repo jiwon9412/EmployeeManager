@@ -78,9 +78,9 @@ const SlideDot = styled.div<DotProps>`
     min-width: 10px;
 
     border-radius: 50%;
-    border: 1px solid #385461;
+    border: 1px solid #058ae7;
   }
   span:nth-child(${(props) => props.active}) {
-    background-color: #385461;
+    background-color: #058ae7;
   }
 `;
