@@ -29,7 +29,7 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
   return (
     <SideWrap>
       <SideLogo>
-        <img src='images/sidelogo.png' alt='' />
+        <img src='/images/sidelogo.png' alt='' />
       </SideLogo>
       <SideBarNavigation>
         <ul>

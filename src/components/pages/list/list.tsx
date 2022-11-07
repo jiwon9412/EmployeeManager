@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import AddBtn from "../../atoms/addBtn";
 import DeleteBtn from "../../atoms/deleteBtn";
-import Search from "../../atoms/search";
 import Cards from "../../blocks/cards/cards";
 import Modal from "../../blocks/modal/modal";
 import SearchTitle from "../../blocks/searchTitle/searchTitle";
@@ -58,15 +57,34 @@ const data: IEmployeeInfos[] = [
     id: 3,
   },
 ];
-
+interface MutableRefObject<T> {
+  current: T;
+}
 const List = () => {
   const [openModal, setOpenModal] = useState(false);
   const [manage, setManage] = useState(true); //나중에 context로 관리 필요
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const showModal = (): void => {
     setOpenModal(true);
     console.log("show");
   };
+
+  const closeModal = (e: MouseEvent) => {
+    if (
+      openModal &&
+      (!modalRef.current || !modalRef.current.contains(e.target as Node))
+    ) {
+      setOpenModal(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeModal, true);
+    return () => {
+      document.removeEventListener("click", closeModal, true);
+    };
+  });
   return (
     <ListWrap>
       <ListHeader>
@@ -79,7 +97,7 @@ const List = () => {
         )}
       </ListHeader>
       <Cards employeeInfos={data} />
-      {openModal && <Modal />}
+      <div ref={modalRef}>{openModal && <Modal />}</div>
     </ListWrap>
   );
 };

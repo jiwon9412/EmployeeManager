@@ -52,7 +52,7 @@ const StyleCard = styled.div`
 const IntroBox = styled.div`
   width: 100%;
   height: 40%;
-  background-color: #eeeeee;
+  background-color: #eefaff;
   margin: 0;
   margin-top: 30%;
   border-radius: 5px;

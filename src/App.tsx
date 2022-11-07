@@ -1,7 +1,6 @@
 import Login from "./components/pages/login/login";
 import AuthService from "./service/auth_service";
 import "./App.css";
-import styled from "styled-components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/pages/home/home";
 import Layout from "./components/pages/layout/layout";
