@@ -1,6 +1,10 @@
+import { useState } from "react";
 import styled from "styled-components";
+import AddBtn from "../../atoms/addBtn";
+import DeleteBtn from "../../atoms/deleteBtn";
 import Search from "../../atoms/search";
 import Cards from "../../blocks/cards/cards";
+import Modal from "../../blocks/modal/modal";
 import SearchTitle from "../../blocks/searchTitle/searchTitle";
 
 export interface IEmployeeInfos {
@@ -8,8 +12,8 @@ export interface IEmployeeInfos {
   name: string;
   department: string;
   rank: string;
-  phone: string;
-  photo: string;
+  phone?: string;
+  photo?: string;
 }
 
 const data: IEmployeeInfos[] = [
@@ -56,12 +60,26 @@ const data: IEmployeeInfos[] = [
 ];
 
 const List = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [manage, setManage] = useState(true); //나중에 context로 관리 필요
+
+  const showModal = (): void => {
+    setOpenModal(true);
+    console.log("show");
+  };
   return (
     <ListWrap>
       <ListHeader>
         <SearchTitle title='Member List' />
+        {manage && (
+          <BtnBox>
+            <DeleteBtn />
+            <AddBtn handleClick={showModal} />
+          </BtnBox>
+        )}
       </ListHeader>
       <Cards employeeInfos={data} />
+      {openModal && <Modal />}
     </ListWrap>
   );
 };
@@ -77,6 +95,13 @@ const ListWrap = styled.section`
 
 const ListHeader = styled.section`
   display: flex;
-
   width: 100%;
+`;
+
+const BtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 15%;
+  max-width: 200px;
+  margin-right: 3px;
 `;

@@ -38,6 +38,7 @@ const StyleCard = styled.div`
   border-radius: 5%;
   box-shadow: 0 0.3em 10px 0 #ccc;
   margin-bottom: 5%;
+  margin-right: 3%;
 
   img {
     display: block;

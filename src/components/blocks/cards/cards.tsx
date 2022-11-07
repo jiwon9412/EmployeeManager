@@ -17,9 +17,7 @@ export default Cards;
 
 const CardsWrap = styled.section`
   display: flex;
-  justify-content: space-between;
+
   flex-wrap: wrap;
-  padding: 1% 5%;
-
-
+  padding: 1% 1%;
 `;

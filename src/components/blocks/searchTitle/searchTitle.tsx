@@ -1,12 +1,17 @@
-import React from "react";
 import styled from "styled-components";
+
 import Search from "../../atoms/search";
 import Title, { ITitle } from "../../atoms/title";
 
-const SearchTitle = ({ title }: ITitle) => {
+interface ISearchTitle extends ITitle {
+  manage?: boolean;
+}
+
+const SearchTitle = ({ title, manage }: ISearchTitle) => {
   return (
     <StyledSearchTitle>
       <Title title={title} />
+
       <Search />
     </StyledSearchTitle>
   );
@@ -19,4 +24,12 @@ const StyledSearchTitle = styled.section`
   align-items: center;
   width: 100%;
   padding-right: 5%;
+`;
+
+const BtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  max-width: 200px;
 `;
