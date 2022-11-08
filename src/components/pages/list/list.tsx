@@ -3,8 +3,9 @@ import styled from "styled-components";
 import AddBtn from "../../atoms/addBtn";
 import DeleteBtn from "../../atoms/deleteBtn";
 import Cards from "../../blocks/cards/cards";
-import Modal from "../../blocks/modal/modal";
 import SearchTitle from "../../blocks/searchTitle/searchTitle";
+import ModalBackground from "../../atoms/modalBackground";
+import AddModal from "../../blocks/addModal/addModal";
 
 export interface IEmployeeInfos {
   id: number;
@@ -57,32 +58,30 @@ const data: IEmployeeInfos[] = [
     id: 3,
   },
 ];
-interface MutableRefObject<T> {
-  current: T;
-}
+
 const List = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openAddModal, setOpenAddModal] = useState(false);
   const [manage, setManage] = useState(true); //나중에 context로 관리 필요
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const showModal = (): void => {
-    setOpenModal(true);
+  const showAddModal = (): void => {
+    setOpenAddModal(true);
     console.log("show");
   };
 
-  const closeModal = (e: MouseEvent) => {
+  const closeAddModal = (e: MouseEvent) => {
     if (
-      openModal &&
+      openAddModal &&
       (!modalRef.current || !modalRef.current.contains(e.target as Node))
     ) {
-      setOpenModal(false);
+      setOpenAddModal(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", closeModal, true);
+    document.addEventListener("click", closeAddModal, true);
     return () => {
-      document.removeEventListener("click", closeModal, true);
+      document.removeEventListener("click", closeAddModal, true);
     };
   });
   return (
@@ -92,12 +91,13 @@ const List = () => {
         {manage && (
           <BtnBox>
             <DeleteBtn />
-            <AddBtn handleClick={showModal} />
+            <AddBtn handleClick={showAddModal} />
           </BtnBox>
         )}
       </ListHeader>
       <Cards employeeInfos={data} />
-      <div ref={modalRef}>{openModal && <Modal />}</div>
+      <div ref={modalRef}>{openAddModal && <AddModal />}</div>
+      {openAddModal && <ModalBackground />}
     </ListWrap>
   );
 };

@@ -1,8 +1,8 @@
-import React from "react";
+import { ReactNode } from "react";
 import styled from "styled-components";
 
-const Modal = () => {
-  return <StyledModal></StyledModal>;
+const Modal = ({ children }: { children?: ReactNode }) => {
+  return <StyledModal>{children && children}</StyledModal>;
 };
 
 export default Modal;
@@ -18,5 +18,7 @@ const StyledModal = styled.div`
   width: 30%;
   height: 70vh;
   z-index: 999;
-  background-color: #ccc;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0.3em 10px 0 #ccc;
 `;
