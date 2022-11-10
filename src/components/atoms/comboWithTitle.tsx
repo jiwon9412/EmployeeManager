@@ -5,6 +5,7 @@ interface IComboWithTitle {
   width: string;
   height: string;
   interval?: string;
+  list: string[];
 }
 
 interface IStyledCombo {
@@ -18,11 +19,16 @@ const ComboWithTitle = ({
   width,
   height,
   interval,
+  list,
 }: IComboWithTitle) => {
   return (
     <StyledBox>
       <p>{title} </p>
-      <StyledCombo width={width} height={height} interval={interval} />
+      <StyledCombo width={width} height={height} interval={interval}>
+        {list.map((item) => (
+          <option value={item}>{item}</option>
+        ))}
+      </StyledCombo>
     </StyledBox>
   );
 };

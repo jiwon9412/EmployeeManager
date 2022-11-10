@@ -1,8 +1,10 @@
-import React from "react";
 import styled from "styled-components";
+import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
 import InputWithTitle from "../../atoms/inputWithTitle";
 import Modal from "../../atoms/modal";
+
+const list = ["인사팀", "개발팀", "소설팀", "영업팀"];
 
 const AddModal = () => {
   return (
@@ -10,10 +12,23 @@ const AddModal = () => {
       <AddModalHeader>Add Member</AddModalHeader>
       <AddModalBody>
         <InputWithTitle title='Name' width='70%' height='2.5em' />
-        <ComboWithTitle title='Department' width='70%' height='2.5em' />
-        <ComboWithTitle title='Rank' width='70%' height='2.5em' />
+        <ComboWithTitle
+          title='Department'
+          width='70%'
+          height='2.5em'
+          list={list}
+        />
+        <ComboWithTitle title='Rank' width='70%' height='2.5em' list={list} />
         <InputWithTitle title='Phone' width='70%' height='2.5em' />
       </AddModalBody>
+      <AddModalFooter>
+        <Button
+          title='추가하기'
+          width='70%'
+          backgroundColor='#058ae7'
+          color='#fff'
+        />
+      </AddModalFooter>
     </Modal>
   );
 };
@@ -40,5 +55,12 @@ const AddModalBody = styled.div`
   padding: 0 10%;
   padding-top: 1em;
   width: 100%;
-  height: 75%;
+  height: 65%;
+`;
+
+const AddModalFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
 `;

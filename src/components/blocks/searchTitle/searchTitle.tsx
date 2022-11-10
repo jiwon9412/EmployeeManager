@@ -25,11 +25,3 @@ const StyledSearchTitle = styled.section`
   width: 100%;
   padding-right: 5%;
 `;
-
-const BtnBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  max-width: 200px;
-`;
