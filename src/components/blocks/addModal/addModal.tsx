@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
+import ImageUploader from "../../atoms/imageUploader";
 import InputWithTitle from "../../atoms/inputWithTitle";
 import Modal from "../../atoms/modal";
 
-const list = ["인사팀", "개발팀", "소설팀", "영업팀"];
+const departMentList = ["인사팀", "개발팀", "소설팀", "영업팀"];
+const rankList = ["사원", "대리", "과장", "차장", "부장"];
 
 const AddModal = () => {
   return (
-    <Modal>
+    <Modal height='70vh'>
       <AddModalHeader>Add Member</AddModalHeader>
       <AddModalBody>
         <InputWithTitle title='Name' width='70%' height='2.5em' />
@@ -16,15 +18,21 @@ const AddModal = () => {
           title='Department'
           width='70%'
           height='2.5em'
-          list={list}
+          list={departMentList}
         />
-        <ComboWithTitle title='Rank' width='70%' height='2.5em' list={list} />
+        <ComboWithTitle
+          title='Rank'
+          width='70%'
+          height='2.5em'
+          list={rankList}
+        />
         <InputWithTitle title='Phone' width='70%' height='2.5em' />
+        <ImageUploader width='25%' height='2.5em' />
       </AddModalBody>
       <AddModalFooter>
         <Button
-          title='추가하기'
-          width='70%'
+          title='Add Member + '
+          width='50%'
           backgroundColor='#058ae7'
           color='#fff'
         />
@@ -53,7 +61,7 @@ const AddModalBody = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 10%;
-  padding-top: 1em;
+  padding-top: 1.5em;
   width: 100%;
   height: 65%;
 `;

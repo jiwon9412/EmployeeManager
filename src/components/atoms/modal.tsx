@@ -1,13 +1,22 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-const Modal = ({ children }: { children?: ReactNode }) => {
-  return <StyledModal>{children && children}</StyledModal>;
+interface IModal {
+  children?: ReactNode;
+  height?: string;
+}
+
+interface IStyledModal {
+  height?: string;
+}
+
+const Modal = ({ children, height }: IModal) => {
+  return <StyledModal height={height}>{children && children}</StyledModal>;
 };
 
 export default Modal;
 
-const StyledModal = styled.div`
+const StyledModal = styled.div<IStyledModal>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +24,10 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30%;
-  height: 60vh;
+  width: 25%;
+  height: ${(props) => props.height || "70vh"};
+  max-height: 500px;
+  min-height: 370px;
   z-index: 999;
   background-color: #fff;
   border-radius: 10px;
