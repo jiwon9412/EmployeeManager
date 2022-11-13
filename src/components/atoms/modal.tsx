@@ -25,9 +25,10 @@ const StyledModal = styled.div<IStyledModal>`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 25%;
+  min-width: 240px;
   height: ${(props) => props.height || "70vh"};
   max-height: 500px;
-  min-height: 370px;
+  min-height: 430px;
   z-index: 999;
   background-color: #fff;
   border-radius: 10px;

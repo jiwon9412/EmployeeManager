@@ -6,6 +6,7 @@ interface IButton {
   backgroundColor?: string;
   width: string;
   height?: string;
+  onClick?: () => void;
 }
 
 interface IStyledButton {
@@ -15,13 +16,21 @@ interface IStyledButton {
   height?: string;
 }
 
-const Button = ({ title, color, width, height, backgroundColor }: IButton) => {
+const Button = ({
+  title,
+  color,
+  width,
+  height,
+  backgroundColor,
+  onClick,
+}: IButton) => {
   return (
     <StyledButton
       color={color}
       width={width}
       height={height}
       backgroundColor={backgroundColor}
+      onClick={onClick && onClick}
     >
       {title}
     </StyledButton>

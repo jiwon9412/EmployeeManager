@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styled from "styled-components";
 
 interface IComboWithTitle {
@@ -6,6 +7,7 @@ interface IComboWithTitle {
   height: string;
   interval?: string;
   list: string[];
+  setValue?: (value: string) => void;
 }
 
 interface IStyledCombo {
@@ -20,11 +22,23 @@ const ComboWithTitle = ({
   height,
   interval,
   list,
+  setValue,
 }: IComboWithTitle) => {
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  const conveyValue = () => {
+    setValue && selectRef.current?.value && setValue(selectRef.current?.value);
+  };
   return (
     <StyledBox>
       <p>{title} </p>
-      <StyledCombo width={width} height={height} interval={interval}>
+      <StyledCombo
+        width={width}
+        height={height}
+        interval={interval}
+        ref={selectRef}
+        onChange={conveyValue}
+      >
         {list.map((item) => (
           <option value={item}>{item}</option>
         ))}
@@ -44,6 +58,7 @@ const StyledBox = styled.div`
     width: 20%;
     min-width: 80px;
     font-size: 1em;
+    font-weight: 600;
   }
 `;
 

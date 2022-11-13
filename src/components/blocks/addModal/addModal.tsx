@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
@@ -8,35 +9,99 @@ import Modal from "../../atoms/modal";
 const departMentList = ["인사팀", "개발팀", "소설팀", "영업팀"];
 const rankList = ["사원", "대리", "과장", "차장", "부장"];
 
+interface IEmployee {
+  name?: string;
+  rank?: string;
+  department?: string;
+  phone?: string;
+  photo?: string;
+}
+
 const AddModal = () => {
+  /**state */
+  const [info, setInfo] = useState<IEmployee>({});
+
+  /**
+   * 프로필 이미지를 세팅하는 함수
+   * @param url 등록할 이미지의 url
+   * @returns
+   */
+  const setPhoto = (url: string): void | undefined => {
+    setInfo((prevInfo) => ({ ...prevInfo, photo: url }));
+  };
+
+  /**
+   * 직원 이름을 세팅하는 함수
+   * @param name 등록할 직원 이름
+   */
+  const setName = (name: string): void => {
+    //console.log(name);
+    setInfo((prevInfo) => ({ ...prevInfo, name: name }));
+  };
+
+  /**
+   * 핸드폰 번호를 세팅하는 함수
+   * @param phone 등록할 핸드폰 번호
+   */
+  const setPhone = (phone: string): void => {
+    setInfo((prevInfo) => ({ ...prevInfo, phone: phone }));
+  };
+
+  const setDepartment = (department: string): void => {
+    console.log(department);
+
+    setInfo((prevInfo) => ({ ...prevInfo, department: department }));
+  };
+
+  const setRank = (rank: string): void => {
+    setInfo((prevInfo) => ({ ...prevInfo, rank: rank }));
+  };
+
+  const setEmployee = (): void => {
+    //firebase에 employee 추가
+  };
+
   return (
     <Modal height='70vh'>
       <AddModalHeader>Add Member</AddModalHeader>
       <AddModalBody>
-        <InputWithTitle title='Name' width='70%' height='2.5em' />
+        <InputWithTitle
+          title='Name'
+          width='70%'
+          height='2.5em'
+          setValue={setName}
+        />
         <ComboWithTitle
           title='Department'
           width='70%'
           height='2.5em'
           list={departMentList}
+          setValue={setDepartment}
         />
         <ComboWithTitle
           title='Rank'
           width='70%'
           height='2.5em'
           list={rankList}
+          setValue={setRank}
         />
-        <InputWithTitle title='Phone' width='70%' height='2.5em' />
-        <ImageUploader width='25%' height='2.5em' />
+        <InputWithTitle
+          title='Phone'
+          width='70%'
+          height='2.5em'
+          setValue={setPhone}
+        />
+        <ImageUploader width='25%' height='2.5em' handleUpload={setPhoto} />
+        <ButtonBox>
+          <Button
+            title='Add Member + '
+            width='60%'
+            backgroundColor='#058ae7'
+            color='#fff'
+            onClick={setEmployee}
+          />
+        </ButtonBox>
       </AddModalBody>
-      <AddModalFooter>
-        <Button
-          title='Add Member + '
-          width='50%'
-          backgroundColor='#058ae7'
-          color='#fff'
-        />
-      </AddModalFooter>
     </Modal>
   );
 };
@@ -56,19 +121,19 @@ const AddModalHeader = styled.div`
   border-bottom: 3px solid #ccc;
 `;
 
-const AddModalBody = styled.div`
+const AddModalBody = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 10%;
   padding-top: 1.5em;
   width: 100%;
-  height: 65%;
+  height: 75%;
 `;
 
-const AddModalFooter = styled.div`
+const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 10%;
+  margin-top: 1em;
 `;

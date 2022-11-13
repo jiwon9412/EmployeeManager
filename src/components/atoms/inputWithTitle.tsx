@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Ref, useRef } from "react";
 import styled from "styled-components";
 
 interface IInputWithTitle {
@@ -6,8 +6,8 @@ interface IInputWithTitle {
   width: string;
   height: string;
   interval?: string;
+  setValue?: (value: string) => void;
 }
-
 interface IStyledInput {
   width: string;
   height: string;
@@ -19,11 +19,22 @@ const InputWithTitle = ({
   width,
   height,
   interval,
+  setValue,
 }: IInputWithTitle) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const conveyValue = () => {
+    setValue && inputRef.current?.value && setValue(inputRef.current?.value);
+  };
   return (
     <StyledBox>
       <p>{title} </p>
-      <StyledInput width={width} height={height} interval={interval} />
+      <StyledInput
+        width={width}
+        height={height}
+        interval={interval}
+        ref={inputRef}
+        onChange={conveyValue}
+      />
     </StyledBox>
   );
 };
@@ -39,6 +50,7 @@ const StyledBox = styled.div`
     width: 20%;
     min-width: 80px;
     font-size: 1em;
+    font-weight: 600;
   }
 `;
 

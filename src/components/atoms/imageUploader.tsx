@@ -9,6 +9,7 @@ interface IImageUploader {
   width?: string;
   height?: string;
   interval?: string;
+  handleUpload?: (url: string) => void;
 }
 
 interface IImageInputButton {
@@ -17,7 +18,13 @@ interface IImageInputButton {
   interval?: string;
 }
 
-const ImageUploader = ({ title, width, height, interval }: IImageUploader) => {
+const ImageUploader = ({
+  title,
+  width,
+  height,
+  interval,
+  handleUpload,
+}: IImageUploader) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const selectImage = (event: React.MouseEvent): void => {
@@ -29,7 +36,13 @@ const ImageUploader = ({ title, width, height, interval }: IImageUploader) => {
     //console.log(event.target.files[0]);
     const file = event.target.files[0];
     //image upload
-    upload(file).then((url) => console.log(url));
+    upload(file).then((url) => {
+      try {
+        handleUpload && handleUpload(url.toString());
+      } catch (error) {
+        alert(`Error : ${error}`);
+      }
+    });
     //firebase에 url올리기);
   };
   return (
@@ -60,6 +73,7 @@ const ImageUploaderBox = styled.div`
     width: 20%;
     min-width: 80px;
     font-size: 1em;
+    font-weight: 600;
   }
 `;
 
