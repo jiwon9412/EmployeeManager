@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { writeEmployeeData } from "../../../service/db_service";
 import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
 import ImageUploader from "../../atoms/imageUploader";
@@ -9,7 +10,8 @@ import Modal from "../../atoms/modal";
 const departMentList = ["인사팀", "개발팀", "소설팀", "영업팀"];
 const rankList = ["사원", "대리", "과장", "차장", "부장"];
 
-interface IEmployee {
+export interface IEmployee {
+  id: number;
   name?: string;
   rank?: string;
   department?: string;
@@ -19,7 +21,7 @@ interface IEmployee {
 
 const AddModal = () => {
   /**state */
-  const [info, setInfo] = useState<IEmployee>({});
+  const [info, setInfo] = useState<IEmployee>({ id: 4 });
 
   /**
    * 프로필 이미지를 세팅하는 함수
@@ -47,18 +49,28 @@ const AddModal = () => {
     setInfo((prevInfo) => ({ ...prevInfo, phone: phone }));
   };
 
+  /**
+   * 부서명을 세팅하는 함수
+   * @param department 등록할 부서명
+   */
   const setDepartment = (department: string): void => {
-    console.log(department);
+    //console.log(department);
 
     setInfo((prevInfo) => ({ ...prevInfo, department: department }));
   };
 
+  /**
+   * 직급을 세팅하는 함수
+   * @param rank 등록할 직급
+   */
   const setRank = (rank: string): void => {
     setInfo((prevInfo) => ({ ...prevInfo, rank: rank }));
   };
 
-  const setEmployee = (): void => {
-    //firebase에 employee 추가
+  const setEmployee = (e: React.MouseEvent): void => {
+    e.preventDefault();
+    const employeeId = Date.now();
+    writeEmployeeData(employeeId.toString(), info);
   };
 
   return (

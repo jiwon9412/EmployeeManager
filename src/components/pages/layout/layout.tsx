@@ -3,7 +3,7 @@ import AuthService from "../../../service/auth_service";
 import Footer from "../../blocks/footer/footer";
 import Header from "../../blocks/header/header";
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../blocks/sidebar/sidebar";
 const menuList: string[] = ["home", "list", "board"];
 const Layout = ({
@@ -11,6 +11,9 @@ const Layout = ({
 }: {
   authService?: AuthService;
 }): JSX.Element => {
+  const { state } = useLocation();
+  console.log(state);
+
   return (
     <LayoutWrap>
       <Main>

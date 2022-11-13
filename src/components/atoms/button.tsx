@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface IButton {
@@ -6,7 +7,7 @@ interface IButton {
   backgroundColor?: string;
   width: string;
   height?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 interface IStyledButton {
