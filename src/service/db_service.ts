@@ -6,7 +6,11 @@ import { getDatabase, ref, set } from "firebase/database";
 const database = getDatabase(firebaseApp);
 
 export function writeEmployeeData(userId: string, info: IEmployee) {
+  const { name, photo, phone, rank } = info;
   set(ref(database, "employee/" + userId), {
-    info,
+    name,
+    photo,
+    phone,
+    rank,
   });
 }

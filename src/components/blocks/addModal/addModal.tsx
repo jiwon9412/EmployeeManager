@@ -11,7 +11,7 @@ const departMentList = ["인사팀", "개발팀", "소설팀", "영업팀"];
 const rankList = ["사원", "대리", "과장", "차장", "부장"];
 
 export interface IEmployee {
-  id: number;
+  id?: number;
   name?: string;
   rank?: string;
   department?: string;
@@ -21,7 +21,7 @@ export interface IEmployee {
 
 const AddModal = () => {
   /**state */
-  const [info, setInfo] = useState<IEmployee>({ id: 4 });
+  const [info, setInfo] = useState<IEmployee>({});
 
   /**
    * 프로필 이미지를 세팅하는 함수
@@ -29,6 +29,8 @@ const AddModal = () => {
    * @returns
    */
   const setPhoto = (url: string): void | undefined => {
+    console.log(url);
+
     setInfo((prevInfo) => ({ ...prevInfo, photo: url }));
   };
 

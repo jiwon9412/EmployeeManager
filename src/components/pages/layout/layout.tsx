@@ -12,7 +12,7 @@ const Layout = ({
   authService?: AuthService;
 }): JSX.Element => {
   const { state } = useLocation();
-  console.log(state);
+  console.log(state.userId);
 
   return (
     <LayoutWrap>
