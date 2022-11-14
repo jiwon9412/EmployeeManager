@@ -5,12 +5,19 @@ import { getDatabase, ref, set } from "firebase/database";
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(firebaseApp);
 
-export function writeEmployeeData(userId: string, info: IEmployee) {
+export function writeEmployeeData(
+  userId: string,
+  employeeId: string,
+  info: IEmployee
+) {
   const { name, photo, phone, rank } = info;
-  set(ref(database, "employee/" + userId), {
+  console.log("123");
+
+  set(ref(database, `/${userId}/employee`), {
     name,
     photo,
     phone,
     rank,
+    employeeId,
   });
 }

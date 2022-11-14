@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import AuthService from "../../../service/auth_service";
 import Footer from "../../blocks/footer/footer";
 import Header from "../../blocks/header/header";
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../blocks/sidebar/sidebar";
+import { ContextType, LoginContext } from "../../../context/LoginContext";
 const menuList: string[] = ["home", "list", "board"];
 const Layout = ({
   authService,
@@ -12,7 +13,11 @@ const Layout = ({
   authService?: AuthService;
 }): JSX.Element => {
   const { state } = useLocation();
-  console.log(state.userId);
+  const { userinfo, changeUserinfo } = useContext(LoginContext) as ContextType;
+
+  useEffect(() => {
+    state && changeUserinfo({ userId: state.userId });
+  }, []);
 
   return (
     <LayoutWrap>

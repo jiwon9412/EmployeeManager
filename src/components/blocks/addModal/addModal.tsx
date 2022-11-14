@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styled from "styled-components";
+import { ContextType, LoginContext } from "../../../context/LoginContext";
 import { writeEmployeeData } from "../../../service/db_service";
 import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
@@ -21,7 +22,12 @@ export interface IEmployee {
 
 const AddModal = () => {
   /**state */
-  const [info, setInfo] = useState<IEmployee>({});
+  const [info, setInfo] = useState<IEmployee>({
+    department: departMentList[0],
+    rank: rankList[0],
+  });
+  const { userinfo } = useContext(LoginContext) as ContextType;
+  console.log(userinfo);
 
   /**
    * 프로필 이미지를 세팅하는 함수
@@ -72,7 +78,10 @@ const AddModal = () => {
   const setEmployee = (e: React.MouseEvent): void => {
     e.preventDefault();
     const employeeId = Date.now();
-    writeEmployeeData(employeeId.toString(), info);
+    console.log(info);
+
+    userinfo &&
+      writeEmployeeData(userinfo?.userId, employeeId.toString(), info);
   };
 
   return (
