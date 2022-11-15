@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import AuthService from "../../../service/auth_service";
-import Footer from "../../blocks/footer/footer";
-import Header from "../../blocks/header/header";
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../blocks/sidebar/sidebar";
@@ -13,7 +11,7 @@ const Layout = ({
   authService?: AuthService;
 }): JSX.Element => {
   const { state } = useLocation();
-  const { userinfo, changeUserinfo } = useContext(LoginContext) as ContextType;
+  const { changeUserinfo } = useContext(LoginContext) as ContextType;
 
   useEffect(() => {
     state && changeUserinfo({ userId: state.userId });

@@ -11,9 +11,8 @@ export function writeEmployeeData(
   info: IEmployee
 ) {
   const { name, photo, phone, rank } = info;
-  console.log("123");
 
-  set(ref(database, `/${userId}/employee`), {
+  set(ref(database, `${userId}/employee/${employeeId}`), {
     name,
     photo,
     phone,
