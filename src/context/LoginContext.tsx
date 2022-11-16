@@ -21,7 +21,6 @@ export function LoginProvider({ children }: IProvider) {
   const [userinfo, setUserinfo] = useState<State | undefined>();
   const changeUserinfo = (info: State) => {
     setUserinfo(info);
-    sessionStorage.setItem("userId", info.userId);
   };
 
   return (

@@ -20,14 +20,25 @@ export interface IEmployee {
   photo?: string;
 }
 
-const AddModal = () => {
+interface IAddModal {
+  handleClose?: () => void;
+}
+
+const AddModal = ({ handleClose }: IAddModal) => {
   /**state */
-  const [info, setInfo] = useState<IEmployee>({
+  const [employeeInfo, setEmployeeInfo] = useState<IEmployee>({
     department: departMentList[0],
     rank: rankList[0],
   });
-  const { userinfo } = useContext(LoginContext) as ContextType;
-  console.log(userinfo);
+  const [valudation, setValudation] = useState([
+    { key: "name", check: false },
+    { key: "phone", check: false },
+    { key: "photo", check: false },
+    { key: "department", check: true },
+    { key: "rank", check: true },
+  ]);
+  // const { userinfo } = useContext(LoginContext) as ContextType;
+  // console.log(userinfo);
 
   /**
    * 프로필 이미지를 세팅하는 함수
@@ -37,7 +48,8 @@ const AddModal = () => {
   const setPhoto = (url: string): void | undefined => {
     console.log(url);
 
-    setInfo((prevInfo) => ({ ...prevInfo, photo: url }));
+    setEmployeeInfo((prevInfo) => ({ ...prevInfo, photo: url }));
+    toggleValudation("photo");
   };
 
   /**
@@ -46,7 +58,8 @@ const AddModal = () => {
    */
   const setName = (name: string): void => {
     //console.log(name);
-    setInfo((prevInfo) => ({ ...prevInfo, name: name }));
+    setEmployeeInfo((prevInfo) => ({ ...prevInfo, name: name }));
+    toggleValudation("name");
   };
 
   /**
@@ -54,7 +67,8 @@ const AddModal = () => {
    * @param phone 등록할 핸드폰 번호
    */
   const setPhone = (phone: string): void => {
-    setInfo((prevInfo) => ({ ...prevInfo, phone: phone }));
+    setEmployeeInfo((prevInfo) => ({ ...prevInfo, phone: phone }));
+    toggleValudation("phone");
   };
 
   /**
@@ -64,7 +78,8 @@ const AddModal = () => {
   const setDepartment = (department: string): void => {
     //console.log(department);
 
-    setInfo((prevInfo) => ({ ...prevInfo, department: department }));
+    setEmployeeInfo((prevInfo) => ({ ...prevInfo, department: department }));
+    toggleValudation("department");
   };
 
   /**
@@ -72,16 +87,48 @@ const AddModal = () => {
    * @param rank 등록할 직급
    */
   const setRank = (rank: string): void => {
-    setInfo((prevInfo) => ({ ...prevInfo, rank: rank }));
+    setEmployeeInfo((prevInfo) => ({ ...prevInfo, rank: rank }));
+    toggleValudation("rank");
   };
 
+  /**
+   * sessionStorage에 저장된 user id를 사용해서 firebase에 데이터 저장하는 함수
+   * @param e 마우스이벤트
+   */
   const setEmployee = (e: React.MouseEvent): void => {
     e.preventDefault();
     const employeeId = Date.now();
-    console.log(info);
+    //console.log(employeeInfo);
+    const uid = sessionStorage.getItem("uid");
+    //console.log(uid);
+    let check: boolean = true;
+    valudation.some((item) => {
+      if (!item.check) {
+        alert(`${item.key}를 입력하세요.`);
+        check = false;
+        // some메서드에서 break효과
+        return true;
+      }
+    });
 
-    userinfo &&
-      writeEmployeeData(userinfo?.userId, employeeId.toString(), info);
+    if (!check) return;
+
+    try {
+      uid && writeEmployeeData(uid, employeeId.toString(), employeeInfo);
+    } catch (error) {
+      alert(`error : ${error}`);
+    } finally {
+      handleClose && handleClose();
+    }
+  };
+
+  const toggleValudation = (checkKey: string) => {
+    const findIndex = valudation.findIndex((item) => item.key === checkKey);
+    let copyValudation = [...valudation];
+    if (findIndex !== -1) {
+      copyValudation[findIndex] = { ...copyValudation[findIndex], check: true };
+    }
+    setValudation(copyValudation);
   };
 
   return (

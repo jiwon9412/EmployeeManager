@@ -96,7 +96,11 @@ const List = () => {
         )}
       </ListHeader>
       <Cards employeeInfos={data} />
-      <div ref={modalRef}>{openAddModal && <AddModal />}</div>
+      <div ref={modalRef}>
+        {openAddModal && (
+          <AddModal handleClose={() => setOpenAddModal(false)} />
+        )}
+      </div>
       {openAddModal && <ModalBackground />}
     </ListWrap>
   );

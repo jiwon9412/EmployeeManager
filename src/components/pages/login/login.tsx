@@ -14,7 +14,8 @@ const Login = ({ authService }: loginProps): JSX.Element => {
   const nevigate = useNavigate();
   const onLogin = (event: React.MouseEvent): void => {
     authService?.login(event.currentTarget.textContent).then((result) => {
-      console.log(result);
+      console.log(result.user.uid);
+      sessionStorage.setItem("uid", result.user.uid);
       nevigate("/app", {
         state: {
           username: result.user.displayName,
