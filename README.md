@@ -29,8 +29,8 @@ Firebase를 활용하여 Google, Github 로그인을 구현하였고 cloudinary�
  1. atom : 단일 컴포넌트, 기능 X
  2. blocks : atom 두개 이상 합쳐진 컴포넌트, 기능 O
  3. page : atom과 block이 모여서 만들어진 하나의 페이지
-* context
-* service
+* context : 전역 상태관리를 위해 contextAPI 사용
+* service : firebase를 통한 CRUD, cloudinary를 통한 이미지파일 관리를 위한 서비스로직
 
 ##
 
