@@ -9,7 +9,7 @@ Firebase를 활용하여 Google, Github 로그인을 구현하였고 cloudinary�
 ### 드림코딩 강의 프로젝트와의 차별점 
 강의의 프로젝트와 차별점으로 styled-component, typescript 사용, Atomic Design Pattern 적용, Web Storage 사용 등을 두었다.
 
-* 스타일 도구로 styled-component를 채택함으로써 JavaScript와 CSS 사이의 상수와 함수를 쉽게 공유 (props를 활용한 조건부 스타일링)
+* 스타일 도구로 styled-component를 채택함으로써 JavaScript와 CSS 사이의 상수와 함수를 쉽게 공유할 수 있었다. (props를 활용한 조건부 스타일링)
 * typescript를 적용함으로써 컴파일 단계에서 오류를 체크할 수 있었으며 함수나 변수의 사용의도를 쉽게 파악할 수 있게 되었다.
 * Atomic Design Pattern을 적용함으로써 디렉토리 구조를 이전보다 세밀하게 나눌 수 있었고 컴포넌트의 재활용이 용이해졌다.
 * Web Storage를 사용하여 로그인 유저 id (session storage), 다크모드 (local storage)를 관리할 수 있었고, context를 사용하여 로딩 상태를 관리하여 Loading 컴포넌트가 적절하게
