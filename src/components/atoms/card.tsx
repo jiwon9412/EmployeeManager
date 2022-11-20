@@ -10,7 +10,7 @@ const Card = ({
   const { name, department, rank, phone, photo } = employeeInfo;
   return (
     <StyleCard>
-      <img src={require(`../../assets/${photo}`)} alt='' />
+      <img src={photo} alt='' />
       <IntroBox>
         <p id='name'>{name}</p>
         <p>반갑습니다 :)</p>

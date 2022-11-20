@@ -14,14 +14,14 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
   const [selected, setSelected] = useState({
     home: true,
     list: false,
-    board: false,
+    Asset: false,
   });
 
   const handleClick = (menuName: string): void => {
     const newSelected = {
       home: "home" === menuName,
       list: "list" === menuName,
-      board: "board" === menuName,
+      Asset: "Asset" === menuName,
     };
     setSelected(newSelected);
   };
@@ -55,12 +55,12 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
 
           <StyledLink
             to='board'
-            selected={selected["board"]}
+            selected={selected["Asset"]}
             onClick={() => {
-              handleClick("board");
+              handleClick("Asset");
             }}
           >
-            <li>Board</li>
+            <li>Asset</li>
           </StyledLink>
         </ul>
       </SideBarNavigation>

@@ -6,6 +6,7 @@ import Cards from "../../blocks/cards/cards";
 import SearchTitle from "../../blocks/searchTitle/searchTitle";
 import ModalBackground from "../../atoms/modalBackground";
 import AddModal from "../../blocks/addModal/addModal";
+import { getEmployeeData } from "../../../service/db_service";
 
 export interface IEmployeeInfos {
   id: number;
@@ -63,6 +64,8 @@ const List = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [manage, setManage] = useState(true); //나중에 context로 관리 필요
   const modalRef = useRef<HTMLDivElement>(null);
+  const uid = sessionStorage.getItem("uid");
+  const [employeeData, setEmployeeData] = useState([]);
 
   const showAddModal = (): void => {
     setOpenAddModal(true);
@@ -84,6 +87,14 @@ const List = () => {
       document.removeEventListener("click", closeAddModal, true);
     };
   });
+
+  /**
+   * 직원 데이터 불러오기
+   */
+  useEffect(() => {
+    getEmployeeData(uid).then((item) => setEmployeeData(item as never));
+  }, [employeeData]);
+
   return (
     <ListWrap>
       <ListHeader>
@@ -95,7 +106,7 @@ const List = () => {
           </BtnBox>
         )}
       </ListHeader>
-      <Cards employeeInfos={data} />
+      {employeeData && <Cards employeeInfos={employeeData} />}
       <div ref={modalRef}>
         {openAddModal && (
           <AddModal handleClose={() => setOpenAddModal(false)} />

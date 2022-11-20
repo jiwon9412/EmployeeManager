@@ -3,12 +3,15 @@ import styled from "styled-components";
 import Card from "../../atoms/card";
 import { IEmployeeInfos } from "../../pages/list/list";
 
-const Cards = ({ employeeInfos }: { employeeInfos: IEmployeeInfos[] }) => {
+const Cards = ({
+  employeeInfos,
+}: {
+  employeeInfos: IEmployeeInfos[] | null;
+}) => {
   return (
     <CardsWrap>
-      {employeeInfos.map((info) => (
-        <Card employeeInfo={info} key={info.id} />
-      ))}
+      {employeeInfos &&
+        employeeInfos.map((info) => <Card employeeInfo={info} key={info.id} />)}
     </CardsWrap>
   );
 };
