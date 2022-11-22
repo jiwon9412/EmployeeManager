@@ -1,20 +1,18 @@
-import React, { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import AuthService from "../../../service/auth_service";
 import { ListBoxProps } from "../../atoms/listBox";
 import Title from "../../atoms/title";
 import ListBoxs from "../../blocks/listBoxs/listBoxs";
 import Slider from "../../blocks/slider/slider";
 
-const Home = ({ authService }: { authService?: AuthService }): JSX.Element => {
+const Home = (): JSX.Element => {
   const location = useLocation();
   return (
     <HomeBox>
       <Title title='Home' />
       <Slider />
       <Title title='Member' />
-      <ListBoxs employeeInfos={data} />
+      {/* <ListBoxs employeeInfos={data} /> */}
     </HomeBox>
   );
 };

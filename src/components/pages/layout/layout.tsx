@@ -1,15 +1,11 @@
 import { useContext, useEffect, useRef } from "react";
-import AuthService from "../../../service/auth_service";
+
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../blocks/sidebar/sidebar";
 import { ContextType, LoginContext } from "../../../context/LoginContext";
 const menuList: string[] = ["home", "list", "board"];
-const Layout = ({
-  authService,
-}: {
-  authService?: AuthService;
-}): JSX.Element => {
+const Layout = (): JSX.Element => {
   const { state } = useLocation();
   const { changeUserinfo } = useContext(LoginContext) as ContextType;
 

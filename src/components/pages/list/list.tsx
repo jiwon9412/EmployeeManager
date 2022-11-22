@@ -6,7 +6,7 @@ import Cards from "../../blocks/cards/cards";
 import SearchTitle from "../../blocks/searchTitle/searchTitle";
 import ModalBackground from "../../atoms/modalBackground";
 import AddModal from "../../blocks/addModal/addModal";
-import { getEmployeeData } from "../../../service/db_service";
+import { getEmployeeData } from "../../../api/dbAPI";
 
 export interface IEmployeeInfos {
   id: number;

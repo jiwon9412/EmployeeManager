@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { ContextType, LoginContext } from "../../../context/LoginContext";
-import { writeEmployeeData } from "../../../service/db_service";
+import { writeEmployeeData } from "../../../api/dbAPI";
 import Button from "../../atoms/button";
 import ComboWithTitle from "../../atoms/comboWithTitle";
 import ImageUploader from "../../atoms/imageUploader";
@@ -164,7 +164,7 @@ const AddModal = ({ handleClose }: IAddModal) => {
         <ImageUploader width='25%' height='2.5em' handleUpload={setPhoto} />
         <ButtonBox>
           <Button
-            title='Add Member + '
+            title='Add Member'
             width='60%'
             backgroundColor='#058ae7'
             color='#fff'
@@ -205,5 +205,5 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 1em;
+  margin-top: 2em;
 `;

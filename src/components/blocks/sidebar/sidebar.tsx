@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { logout } from "../../../api/authAPI";
+import Button from "../../atoms/button";
+import LogoutButton from "../../atoms/loginButton/logoutButton";
 
 interface ISidebar {
   menuList: string[];
@@ -17,6 +20,9 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
     Asset: false,
   });
 
+  const uid = sessionStorage.getItem("uid");
+  const navigate = useNavigate();
+
   const handleClick = (menuName: string): void => {
     const newSelected = {
       home: "home" === menuName,
@@ -24,6 +30,12 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
       Asset: "Asset" === menuName,
     };
     setSelected(newSelected);
+  };
+
+  const onLogout = () => {
+    logout().then(() => {
+      navigate("/");
+    });
   };
 
   return (
@@ -64,6 +76,7 @@ const Sidebar = ({ menuList }: ISidebar): JSX.Element => {
           </StyledLink>
         </ul>
       </SideBarNavigation>
+      {uid && <LogoutButton onLogout={onLogout} />}
     </SideWrap>
   );
 };
@@ -73,6 +86,7 @@ export default Sidebar;
 const SideWrap = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 25%;
   min-width: 200px;
 `;

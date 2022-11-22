@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import React, { useRef } from "react";
-import upload from "../../service/file_upload";
+import upload from "../../api/fileuploadAPI";
 
 interface IImageUploader {
   title?: string;
@@ -90,12 +90,13 @@ const ImageInputButton = styled.button<IImageInputButton>`
   min-width: 80px;
   height: ${(props) => props.height || "2.5em"};
   margin-left: ${(props) => props.interval || "1em"};
-  border: 1px solid rgb(44, 44, 44);
+  margin-top: 0.2em;
+  border: 1px solid rgb(141, 141, 141);
   /* border-radius: 1em; */
 
   outline: none;
   cursor: pointer;
-  color: rgb(44, 44, 44);
+  color: rgb(141, 141, 141);
   font-size: 1em;
   background-color: #fff;
 

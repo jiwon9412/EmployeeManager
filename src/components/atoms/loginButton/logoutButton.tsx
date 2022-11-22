@@ -13,7 +13,7 @@ export default LogoutButton;
 
 const LogoutBtn = styled.button`
   cursor: pointer;
-  background-color: #e7a10a;
+  background-color: #ccc;
   color: #fff;
 
   border-style: none;
@@ -23,10 +23,11 @@ const LogoutBtn = styled.button`
 
   position: absolute;
   display: block;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 30px;
+  font-weight: 600;
 
   &:hover {
-    font-weight: 600;
+    background-color: #000;
   }
 `;

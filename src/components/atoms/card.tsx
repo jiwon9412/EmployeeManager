@@ -43,6 +43,11 @@ const StyleCard = styled.div`
   img {
     display: block;
     width: 35%;
+    height: auto;
+    max-width: 90px;
+    max-height: 90px;
+    min-width: 80px;
+    min-height: 80px;
     position: absolute;
     top: 1.5em;
     left: 1.5em;

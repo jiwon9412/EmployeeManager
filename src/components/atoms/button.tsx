@@ -46,7 +46,7 @@ const StyledButton = styled.button<IStyledButton>`
   height: ${(props) => props.height || "3em"};
   border-radius: 10px;
   color: ${(props) => props.color || "#000"};
-  font-weight: 500;
+  font-weight: 600;
   border-style: none;
   cursor: pointer;
 `;

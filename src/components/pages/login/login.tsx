@@ -1,19 +1,15 @@
 import React from "react";
-import AuthService from "../../../service/auth_service";
+import { login } from "../../../api/authAPI";
 import LoginButton from "../../atoms/loginButton/loginButton";
 import styled from "styled-components";
 import Header from "../../blocks/header/header";
 import Footer from "../../blocks/footer/footer";
 import { useNavigate } from "react-router-dom";
 
-interface loginProps {
-  authService?: AuthService;
-}
-
-const Login = ({ authService }: loginProps): JSX.Element => {
+const Login = (): JSX.Element => {
   const nevigate = useNavigate();
   const onLogin = (event: React.MouseEvent): void => {
-    authService?.login(event.currentTarget.textContent).then((result) => {
+    login(event.currentTarget.textContent).then((result) => {
       console.log(result.user.uid);
       sessionStorage.setItem("uid", result.user.uid);
       nevigate("/app", {
@@ -28,7 +24,7 @@ const Login = ({ authService }: loginProps): JSX.Element => {
   return (
     <StyleApp>
       <LoginWrap>
-        <Header onLogin={false} />
+        <Header />
         <LoginBox>
           <h1>Login</h1>
           <ul>
@@ -40,7 +36,7 @@ const Login = ({ authService }: loginProps): JSX.Element => {
             </li>
           </ul>
         </LoginBox>
-        <Footer onLogin={false} />
+        <Footer />
       </LoginWrap>
     </StyleApp>
   );
